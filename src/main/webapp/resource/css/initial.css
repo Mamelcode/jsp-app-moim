@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@import "font.css";
+
+
+*{
+  word-break: keep-all;
+  box-sizing: border-box;
+}
+/* font-family: 'Pretendard','Poppins', sans-serif; */
+html {overflow-y:scroll; font-size: 62.5% !important;}
+html, h1, h2, h3, h4, h5, h6, form, fieldset, img {margin:0;padding:0;border:0}
+h1, h2, h3, h4, h5, h6 {font-size:16px;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
+
+ul, dl,dt,dd {margin:0;padding:0;list-style:none}
+legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-indent:-9999rem;overflow:hidden}
+label, input, button, select, img {vertical-align:middle;font-size:14px;}
+input, button {margin:0;padding:0; font-size:14px;}
+input[type="submit"] {cursor:pointer}
+button {cursor:pointer}
+ul, ol, li { list-style: none; }
+button:focus { outline: none; }
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal;}
+
+textarea, select {font-size:14px;}
+select {margin:0}
+p {margin:0;padding:0;word-break:break-all}
+hr {display:none}
+pre {overflow-x:scroll;font-size:16px;}
+a {color:#000;text-decoration:none}
+mark { line-height: initial; }
+
+*, :after, :before {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+input[type=text],input[type=password], textarea {
+-webkit-transition:all 0.30s ease-in-out;
+-moz-transition:all 0.30s ease-in-out;
+-ms-transition:all 0.30s ease-in-out;
+-o-transition:all 0.30s ease-in-out;
+outline:none;
+}
+
+mark { line-height: initial; }
+
+figure{margin: 0px;}
+
+input,button {border-radius:0;}
+input[type='submit']{border-radius:0;-webkit-appearance:none;}
