@@ -89,19 +89,24 @@
 					</div>
 				</div>
 			</div>
-			<form class="comment_form" action="/moim/comment" method="post">
-				<input type="hidden" name="commentUser" value="${sessionScope.logonUser.id}">
-				<input type="hidden" name="moimId" value="${moim.id}">
-				<textarea style="border: 1px solid #ccc;" class="comment_formta" name="commentText">댓글을 작성해주세요.</textarea>
-				<div class="comment_formbtbox">
-					<button class="comment_formbt" type="submit">댓글작성</button>
-				</div>
-			</form>
+			<c:choose>
+			<c:when test="${empty commentList}">
+				<h3>등록된 댓글이 없습니다.</h3>
+			</c:when>
+			<c:otherwise>
 			<div class="comment_list">
 			<c:forEach items="${commentList}" var="comment">
 				<div class="comment_list_sub">
 					<div>
-						<p>${comment.writer}</p>
+						<c:choose>
+							<c:when test="${comment.writer eq sessionScope.logonUser.id}">
+								<p>${comment.writer}
+								<span style="font-size: 12px; color: blue;">(나)</span></p>
+							</c:when>
+							<c:otherwise>
+								<p>${comment.writer}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div>
 						<p>${comment.ment}</p>
@@ -112,6 +117,16 @@
 				</div>
 			</c:forEach>
 			</div>
+			</c:otherwise>
+			</c:choose>
+			<form class="comment_form" action="/moim/comment" method="post">
+				<input type="hidden" name="commentUser" value="${sessionScope.logonUser.id}">
+				<input type="hidden" name="moimId" value="${moim.id}">
+				<textarea style="border: 1px solid #ccc;" class="comment_formta" name="commentText" placeholder="댓글을 작성해주세요."></textarea>
+				<div class="comment_formbtbox">
+					<button class="comment_formbt" type="submit">댓글작성</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>

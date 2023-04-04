@@ -28,6 +28,7 @@ public class MoimDetailController extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String id = req.getParameter("id");
 		
+		//============= 댓글 가져오기 ============= 
 		SqlSessionFactory factory = (SqlSessionFactory)
 				req.getServletContext().getAttribute("sqlSessionFactory");
 		SqlSession sqlSession = factory.openSession();
@@ -35,7 +36,7 @@ public class MoimDetailController extends HttpServlet{
 		req.setAttribute("commentList", commentList);
 		
 		List<Attendance> attendances = Attendances.findByMoimId(id);
-		
+		//=====================================		
 		
 		for(Attendance a : attendances) {
 			User found = Users.findById(a.getUserId());
