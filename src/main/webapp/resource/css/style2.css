@@ -163,12 +163,15 @@ input, textarea, button, select {
 
 .comment_form {
 	margin-top: 10px;
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 20px;
 }
 
 .comment_formbtbox {
 	display: flex;
-	width: 960px;
-	margin: 0 auto;
+	width: 100%;
 	justify-content: flex-end;
 }
 
@@ -185,6 +188,13 @@ input, textarea, button, select {
     height: 90px;
     border: 10px;
     resize: none;
+    position: relative;
+}
+
+.comment_form span{
+	position: absolute;
+	top: 13px;
+	left: 15px;
 }
 
 .comment_list {

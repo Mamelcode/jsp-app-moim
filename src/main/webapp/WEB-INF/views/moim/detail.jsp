@@ -119,6 +119,20 @@
 			</div>
 			</c:otherwise>
 			</c:choose>
+			<c:choose>
+			<c:when test="${empty sessionScope.logonUser}">
+			<form class="comment_form" action="/moim/comment" method="post">
+				<input type="hidden" name="commentUser" value="${sessionScope.logonUser.id}">
+				<input type="hidden" name="moimId" value="${moim.id}">
+				<textarea style="border: 1px solid #ccc;" class="comment_formta" 
+				name="commentText" disabled="disabled"></textarea>
+				<span>댓글을 작성하려면 <a href="/user/login" style="color: blue">로그인</a>을 해주세요.</span>
+				<div class="comment_formbtbox">
+					<button class="comment_formbt" type="submit" disabled="disabled">댓글작성</button>
+				</div>
+			</form>
+			</c:when>
+			<c:otherwise>
 			<form class="comment_form" action="/moim/comment" method="post">
 				<input type="hidden" name="commentUser" value="${sessionScope.logonUser.id}">
 				<input type="hidden" name="moimId" value="${moim.id}">
@@ -127,6 +141,8 @@
 					<button class="comment_formbt" type="submit">댓글작성</button>
 				</div>
 			</form>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </body>
