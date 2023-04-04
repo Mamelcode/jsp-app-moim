@@ -133,7 +133,7 @@ input, textarea, button, select {
 	background-color: white;
 }
 .moim-detail-desc {
-	min-height : 280px;
+	min-height : 180px;
 	margin-top : 16px;
 	border-top : 1px solid gray;
 	padding : 16px;
@@ -159,4 +159,57 @@ input, textarea, button, select {
 	padding: 10px;
 	border-radius: 5px;
 	cursor: pointer;
+}
+
+.comment_form {
+	margin-top: 10px;
+}
+
+.comment_formbtbox {
+	display: flex;
+	width: 960px;
+	margin: 0 auto;
+	justify-content: flex-end;
+}
+
+.comment_formbt {
+	margin-top: 5px;
+	color: white;
+	background: gray;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.comment_formta {
+	width: 960px;
+    height: 90px;
+    border: 10px;
+    resize: none;
+}
+
+.comment_list {
+	width: 960px;
+	margin: 0 auto;
+	padding: 24px;
+	margin-top : 15px;
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background: #fff;
+}
+
+.comment_list p{
+	margin: 0px;
+}
+
+.comment_list_sub {
+	border-bottom: 1px solid #ddd;
+	width: 100%;
+	text-align: left;
+	padding-bottom: 20px;
+	margin-bottom: 13px;
+}
+
+.comment_list_sub:last-child {
+	margin-bottom: 0px;
 }

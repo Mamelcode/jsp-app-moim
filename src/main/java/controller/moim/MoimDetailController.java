@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import data.Attendance;
+import data.Comment;
 import data.Moim;
 import data.User;
 import repository.Attendances;
@@ -22,9 +26,16 @@ public class MoimDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		
 		String id = req.getParameter("id");
+		
+		SqlSessionFactory factory = (SqlSessionFactory)
+				req.getServletContext().getAttribute("sqlSessionFactory");
+		SqlSession sqlSession = factory.openSession();
+		List<Comment> commentList = sqlSession.selectList("replys.findByComment", id);
+		req.setAttribute("commentList", commentList);
+		
 		List<Attendance> attendances = Attendances.findByMoimId(id);
+		
 		
 		for(Attendance a : attendances) {
 			User found = Users.findById(a.getUserId());

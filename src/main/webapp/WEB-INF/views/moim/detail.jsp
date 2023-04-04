@@ -89,8 +89,30 @@
 					</div>
 				</div>
 			</div>
+			<form class="comment_form" action="/moim/comment" method="post">
+				<input type="hidden" name="commentUser" value="${sessionScope.logonUser.id}">
+				<input type="hidden" name="moimId" value="${moim.id}">
+				<textarea style="border: 1px solid #ccc;" class="comment_formta" name="commentText">댓글을 작성해주세요.</textarea>
+				<div class="comment_formbtbox">
+					<button class="comment_formbt" type="submit">댓글작성</button>
+				</div>
+			</form>
+			<div class="comment_list">
+			<c:forEach items="${commentList}" var="comment">
+				<div class="comment_list_sub">
+					<div>
+						<p>${comment.writer}</p>
+					</div>
+					<div>
+						<p>${comment.ment}</p>
+					</div>
+					<div>
+						<p><fmt:formatDate value="${comment.writed }" pattern="yyyy/MM/dd"/></p>
+					</div>
+				</div>
+			</c:forEach>
+			</div>
 		</div>
-
 	</div>
 </body>
 </html>
