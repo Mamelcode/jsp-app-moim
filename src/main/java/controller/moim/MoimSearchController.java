@@ -44,9 +44,30 @@ public class MoimSearchController extends HttpServlet{
 		map.put("b", 6*p);
 		List<Moim> list = sqlSession.selectList("moims.findSomeByAtoB", map);
 		
+		int total = sqlSession.selectOne("moims.countDatas");
+		int totalPage = total/6 + (total % 6 > 0 ? 1 : 0);
+		int viewPage = 5;
+		
+		int endPage = (((p-1)/viewPage)+1) * viewPage;
+		if(totalPage < endPage) {
+		    endPage = totalPage;
+		}
+		int startPage = ((p-1)/viewPage) * viewPage + 1;
+		
 		sqlSession.close();
 		//====================================
 		req.setAttribute("select", arycate);
+		req.setAttribute("start", startPage);
+		req.setAttribute("last", endPage);
+		boolean existPrev = p >= 6;
+		boolean existNext = true;
+		if(endPage >= totalPage)
+		{
+			existNext = false;
+		}
+		
+		req.setAttribute("existPrev", existPrev);
+		req.setAttribute("existNext", existNext);
 		
 		if(arycate != null) {
 			List<Moim> li = Moims.findBycateBoth(arycate);

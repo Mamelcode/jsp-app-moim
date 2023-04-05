@@ -18,6 +18,10 @@
 		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	
+	<select id="countDatas" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) FROM MOIMS WHERE BEGIN_DATE &gt; SYSDATE
+	</select>
+	
 	<select id="findById" resultType="data.Moim" parameterType="string">
 		SELECT * FROM MOIMS WHERE ID = #{id}
 	</select>

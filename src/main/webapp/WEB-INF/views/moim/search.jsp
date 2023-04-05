@@ -94,6 +94,41 @@
 				</div>
 			</c:forEach>
 			</div>
+			<%-- 페이징 번호 --%>
+			<div style="display: flex; justify-content:center; ">
+				<div>
+					<c:choose>
+						<c:when test="${existPrev }">
+							<a href="/moim/search?page=${start-1}" style="margin-right: 10px"> < </a>
+						</c:when>
+						<c:otherwise>
+							<a style="margin-right: 10px; color: gray;"> < </a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div>
+					<c:forEach var="p" begin="${start}" end="${last}">
+						<c:choose>
+							<c:when test="${p eq param.page}">
+								<b style="color: blue">${p}</b>
+							</c:when>
+							<c:otherwise>						
+							 	<a href="/moim/search?page=${p}" style="margin: 0px 3px;">${p }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+				<div>
+					<c:choose>
+						<c:when test="${existNext }">
+							<a href="/moim/search?page=${last+1}" style="margin-left: 10px"> > </a>
+						</c:when>
+						<c:otherwise>
+							<a style="margin-left: 10px; color: gray;"> > </a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
