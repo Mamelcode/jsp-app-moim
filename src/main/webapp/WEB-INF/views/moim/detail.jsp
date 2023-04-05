@@ -100,19 +100,19 @@
 					<div>
 						<c:choose>
 							<c:when test="${comment.writer eq sessionScope.logonUser.id}">
-								<p>${comment.writer}
+								<p style="font-weight: 700;">${comment.writer}
 								<span style="font-size: 12px; color: blue;">(나)</span></p>
 							</c:when>
 							<c:otherwise>
-								<p>${comment.writer}</p>
+								<p style="font-weight: 700;">${comment.writer}</p>
 							</c:otherwise>
 						</c:choose>
 					</div>
 					<div>
-						<p>${comment.ment}</p>
+						<p style="margin: 10px 0px;">${comment.ment}</p>
 					</div>
 					<div>
-						<p><fmt:formatDate value="${comment.writed }" pattern="yyyy/MM/dd"/></p>
+						<p style="font-size: 13px;"><fmt:formatDate value="${comment.writed }" pattern="yyyy/MM/dd"/></p>
 					</div>
 				</div>
 			</c:forEach>

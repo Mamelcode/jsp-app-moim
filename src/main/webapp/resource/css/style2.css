@@ -1,11 +1,58 @@
 @charset "UTF-8";
 
+@font-face {
+    font-weight: 100;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-Thin.otf') format('otf');
+}
+@font-face {
+    font-weight: 200;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-ExtraLight.otf') format('otf');
+}
+@font-face {
+    font-weight: 300;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-Light.otf') format('otf');
+}
+@font-face {
+    font-weight: 400;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-Regular.otf') format('otf');
+}
+@font-face {
+    font-weight: 500;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-Medium.otf') format('otf');
+}
+@font-face {
+    font-weight: 600;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-SemiBold.otf') format('otf');
+}
+@font-face {
+    font-weight: 700;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-Bold.otf') format('otf');
+}
+@font-face {
+    font-weight: 800;
+    font-family: 'Pretendard';
+    src: url('../font/Pretendard-ExtraBold.otf') format('otf');
+}
+@font-face {
+    font-family: 'Pretendard-Black';
+    src: url('../font/Pretendard-Black.otf') format('otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap')
 	;
 
 * {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Pretendard';
 	box-sizing: border-box;
 }
 

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-body {margin:0;padding:0;background:#fff; font-family: 'NanumSquareNeo';}
-h1, h2, h3, h4, h5, h6, p, span, a, tr, td, textarea, button, li, input, select, form {font-family: 'NanumSquareNeo';}
+body {margin:0;padding:0;background:#fff; font-family: 'Pretendard';}
+h1, h2, h3, h4, h5, h6, p, span, a, tr, td, textarea, button, li, input, select, form {font-family: 'Pretendard';}
 
 @font-face {
     font-family: 'TheJamsil5Bold';
