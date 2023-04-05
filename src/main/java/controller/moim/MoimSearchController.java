@@ -42,9 +42,11 @@ public class MoimSearchController extends HttpServlet{
 		Map<String, Object> map = new HashMap<>();
 		map.put("a", (p-1)*6+1);
 		map.put("b", 6*p);
-		List<Moim> list = sqlSession.selectList("moims.findSomeByAtoB", map);
+		map.put("cates", arycate);
+		//List<Moim> list = sqlSession.selectList("moims.findSomeByCates", arycate);
+		List<Moim> list = sqlSession.selectList("moims.findSomeByAtoBInCates", map);
 		
-		int total = sqlSession.selectOne("moims.countDatas");
+		int total = sqlSession.selectOne("moims.countDatas", arycate);
 		int totalPage = total/6 + (total % 6 > 0 ? 1 : 0);
 		int viewPage = 5;
 		

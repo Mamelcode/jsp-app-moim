@@ -95,25 +95,41 @@
 			</c:forEach>
 			</div>
 			<%-- 페이징 번호 --%>
+			<c:set var="currentPage" value="${empty param.page ? 1: param.page }"/>
+			<c:set var="findCate" value="${fn:join(paramValues.cate, '&cate=')}" />
 			<div style="display: flex; justify-content:center; ">
 				<div>
 					<c:choose>
 						<c:when test="${existPrev }">
-							<a href="/moim/search?page=${start-1}" style="margin-right: 10px"> < </a>
+							<c:choose>
+								<c:when test="${findCate != ''}">			
+						 			<a href="/moim/search?page=${start - 1}&cate=${findCate}" style="margin-right: 10px;"> < </a>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<a href="/moim/search?page=${start - 1}" style="margin-right: 10px;"> < </a>
+						 		</c:otherwise>
+						 	</c:choose>
 						</c:when>
 						<c:otherwise>
-							<a style="margin-right: 10px; color: gray;"> < </a>
+							<a style="margin-right: 10px; color: #ccc;"> < </a>
 						</c:otherwise>
 					</c:choose>
 				</div>
 				<div>
 					<c:forEach var="p" begin="${start}" end="${last}">
 						<c:choose>
-							<c:when test="${p eq param.page}">
-								<b style="color: blue">${p}</b>
+							<c:when test="${p eq currentPage}">
+								<b style="color: red; margin: 0px 3px;">${p}</b>
 							</c:when>
-							<c:otherwise>						
-							 	<a href="/moim/search?page=${p}" style="margin: 0px 3px;">${p }</a>
+							<c:otherwise>		
+								<c:choose>
+									<c:when test="${findCate != ''}">			
+							 			<a href="/moim/search?page=${p}&cate=${findCate}" style="margin: 0px 3px;">${p }</a>
+							 		</c:when>
+							 		<c:otherwise>
+							 			<a href="/moim/search?page=${p}" style="margin: 0px 3px;">${p }</a>
+							 		</c:otherwise>
+							 	</c:choose>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -121,10 +137,17 @@
 				<div>
 					<c:choose>
 						<c:when test="${existNext }">
-							<a href="/moim/search?page=${last+1}" style="margin-left: 10px"> > </a>
+							<c:choose>
+								<c:when test="${findCate != ''}">			
+						 			<a href="/moim/search?page=${last + 1}&cate=${findCate}" style="margin-left: 10px;"> > </a>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<a href="/moim/search?page=${last + 1}" style="margin-left: 10px;"> > </a>
+						 		</c:otherwise>
+						 	</c:choose>
 						</c:when>
 						<c:otherwise>
-							<a style="margin-left: 10px; color: gray;"> > </a>
+							<a style="margin-left: 10px; color: #ccc;"> > </a>
 						</c:otherwise>
 					</c:choose>
 				</div>

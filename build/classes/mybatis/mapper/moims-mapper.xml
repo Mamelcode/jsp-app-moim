@@ -11,6 +11,23 @@
 		ROWNUM &lt;=3
 	</select>
 	
+	<select id="findSomeByAtoBInCates" resultType="data.Moim" parameterType="hashmap">
+		SELECT * FROM
+		(SELECT ROWNUM RN, t.* FROM
+			(
+			SELECT * FROM MOIMS 
+			WHERE BEGIN_DATE &gt; SYSDATE 
+			<if test="cates != null">
+				AND CATE IN
+				<foreach collection="cates" item="c" open="(" close=")" separator=",">
+					#{c}
+				</foreach>
+			</if>
+			ORDER BY BEGIN_DATE
+			) t
+		) WHERE RN BETWEEN #{a} AND #{b}
+	</select>
+	
 	<select id="findSomeByAtoB" resultType="data.Moim" parameterType="hashmap">
 		SELECT * FROM
 		(SELECT ROWNUM RN, t.* FROM
@@ -18,8 +35,26 @@
 		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	
-	<select id="countDatas" resultType="int" parameterType="hashmap">
+	<select id="findSomeByCates" resultType="data.Moim" parameterType="object[]">
+		SELECT * FROM MOIMS WHERE BEGIN_DATE &gt; SYSDATE
+		<if test="array != null">
+			AND CATE IN
+			<foreach collection="array" open="(" 
+				separator="," close=")" item="one">
+				#{one}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="countDatas" resultType="int" parameterType="object[]">
 		SELECT COUNT(*) FROM MOIMS WHERE BEGIN_DATE &gt; SYSDATE
+		<if test="array != null">
+			AND CATE IN
+			<foreach collection="array" open="(" 
+				separator="," close=")" item="one">
+				#{one}
+			</foreach>
+		</if>
 	</select>
 	
 	<select id="findById" resultType="data.Moim" parameterType="string">
